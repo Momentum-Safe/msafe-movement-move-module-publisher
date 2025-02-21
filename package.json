@@ -1,0 +1,34 @@
+{
+  "name": "msafe-movement-move-module-publisher",
+  "private": true,
+  "version": "5.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@aptos-labs/ts-sdk": "^1.33.1",
+    "@aptos-labs/wallet-adapter-react": "^3.7.9",
+    "@mavensafe/maven-ui": "^1.4.3",
+    "@msafe/aptos-aip62-wallet": "^1.0.13",
+    "@msafe/aptos-wallet-adapter": "^1.1.4",
+    "@mui/material": "latest",
+    "aptos": "^1.21.0",
+    "bignumber.js": "^9.1.1",
+    "buffer": "^6.0.3",
+    "dayjs": "^1.11.7",
+    "notistack": "^3.0.1",
+    "react-hook-form": "^7.46.2"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "prettier": "^2.8.4",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

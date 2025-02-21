@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@msafe/aptos-wallet-adapter": {
+      "signature": "fdbdc762f96216373a5bc7776a41d6a8",
+      "file": true,
+      "replaced": "^1.0.9"
+    }
+  }
+}
