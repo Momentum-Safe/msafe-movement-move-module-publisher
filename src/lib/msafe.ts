@@ -6,15 +6,12 @@ export const MSAFE = {
   network: {
     mainnet: {
       node: "https://mainnet.movementnetwork.xyz/v1",
-      deployer: "0xaa90e0d9d16b63ba4a289fb0dc8d1b454058b21c9b5c76864f825d5c1f32582e",
     },
     testnet: {
-      node: "https://fullnode.testnet.aptoslabs.com",
-      deployer: "0x74f14286e43d27ed0acc0c4548a5be99a7c2af3cf17a1344c87b7f026b2fcc23",
+      node: "https://testnet.movementnetwork.xyz/v1",
     },
     devnet: {
-      node: "https://fullnode.devnet.aptoslabs.com",
-      deployer: "0x74f14286e43d27ed0acc0c4548a5be99a7c2af3cf17a1344c87b7f026b2fcc23",
+      node: "https://devnet.movementnetwork.xyz/v1",
     },
   },
   aptos: {
