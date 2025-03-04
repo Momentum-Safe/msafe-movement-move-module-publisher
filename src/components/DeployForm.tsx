@@ -1,6 +1,7 @@
 import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import { Button, TextField } from "@mavensafe/maven-ui";
-import { Alert, Autocomplete, FormControlLabel, Stack, Switch, Typography } from "@mui/material";
+import HelpIcon from "@mui/icons-material/Help";
+import { Alert, Autocomplete, FormControlLabel, Stack, Switch, Tooltip, Typography } from "@mui/material";
 import { FormEvent, createRef, useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { MoveParser, MovePublisher } from "../lib/move";
@@ -75,46 +76,60 @@ export default function DeployForm({}: DeployFormProps) {
           {errorMessage}
         </Alert>
       )}
-      <Stack spacing={2}>
-        <Controller
-          control={form.control}
-          name="createResourceAccount"
-          render={({ field }) => {
-            return <FormControlLabel control={<Switch {...field} />} label="Create resource account" />;
-          }}
-        />
-        {createResourceAccount && (
-          <Stack direction="row" spacing={2}>
-            <Controller
-              control={form.control}
-              name="seed"
-              render={({ field }) => {
-                return <TextField {...field} disabled={!createResourceAccount} label="Seed" sx={{ width: "100%" }} />;
-              }}
-            />
-            <Controller
-              control={form.control}
-              name="seedEncoding"
-              render={({ field }) => {
-                return (
-                  <Autocomplete
-                    {...field}
-                    onChange={(_, v) => {
-                      field.onChange(v);
-                    }}
-                    options={["Utf8", "Hex"]}
-                    disabled={!createResourceAccount}
-                    renderInput={(params) => {
-                      return <TextField {...params} label="Seed Encoding" />;
-                    }}
-                    sx={{ width: "100%" }}
-                  />
-                );
-              }}
-            />
+      <Tooltip
+        arrow
+        placement="top-start"
+        title={
+          <Stack spacing={0.5}>
+            <Typography sx={{ fontSize: "0.75rem", color: "#fff" }}>Deploy the move package with function:</Typography>
+            <code>0x1::package::publish_with_resource_acount.</code>
           </Stack>
-        )}
-      </Stack>
+        }
+      >
+        <Stack spacing={2}>
+          <Stack direction="row" alignItems="center" spacing={0}>
+            <Controller
+              control={form.control}
+              name="createResourceAccount"
+              render={({ field }) => {
+                return <FormControlLabel control={<Switch {...field} />} label="Create resource account" />;
+              }}
+            />
+            <HelpIcon sx={{ color: "#2C5B67" }} />
+          </Stack>
+          {createResourceAccount && (
+            <Stack direction="row" spacing={2}>
+              <Controller
+                control={form.control}
+                name="seed"
+                render={({ field }) => {
+                  return <TextField {...field} disabled={!createResourceAccount} label="Seed" sx={{ width: "100%" }} />;
+                }}
+              />
+              <Controller
+                control={form.control}
+                name="seedEncoding"
+                render={({ field }) => {
+                  return (
+                    <Autocomplete
+                      {...field}
+                      onChange={(_, v) => {
+                        field.onChange(v);
+                      }}
+                      options={["Utf8", "Hex"]}
+                      disabled={!createResourceAccount}
+                      renderInput={(params) => {
+                        return <TextField {...params} label="Seed Encoding" />;
+                      }}
+                      sx={{ width: "100%" }}
+                    />
+                  );
+                }}
+              />
+            </Stack>
+          )}
+        </Stack>
+      </Tooltip>
       <Button fullWidth color="primary" variant="contained" onClick={() => moduleSelector.current?.click()} loading={parsing}>
         Select & Deploy
         <input ref={moduleSelector} type="file" style={{ display: "none" }} onChange={onSelect} />
